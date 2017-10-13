@@ -20,6 +20,12 @@ Page({
                 });
             }
         })
+    },
+
+    onReady: function(options) {
+      console.log('************************');
+      console.log(options);
+      console.log('************************');
     }
 
 })

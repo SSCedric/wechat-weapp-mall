@@ -7,7 +7,10 @@ Page({
         autoplay: true,
         interval: 3000,
         duration: 1000,
-        loadingHidden: false  // loading
+        circular: true,
+        hasGotSliderDatas: false,
+        hasGotVenuesDatas: false,
+        hasChoiceGotDatas: false
     },
 
     //事件处理函数
@@ -34,9 +37,10 @@ Page({
             header: {
                 'Accept': 'application/json'
             },
-            success: function(res) {
+            success: function (res) {
                 that.setData({
-                    images: res.data
+                  images: res.data,
+                  hasGotSliderDatas: true
                 })
             }
         })
@@ -51,13 +55,9 @@ Page({
             },
             success: function(res) {
                 that.setData({
-                    venuesItems: res.data.data
+                    venuesItems: res.data.data,
+                    hasGotVenuesDatas: true
                 })
-                setTimeout(function () {
-                    that.setData({
-                        loadingHidden: true
-                    })
-                }, 1500)
             }
         })
 
@@ -71,13 +71,9 @@ Page({
             },
             success: function(res) {
                 that.setData({
-                    choiceItems: res.data.data.dataList
+                    choiceItems: res.data.data.dataList,
+                    hasChoiceGotDatas: true
                 })
-                setTimeout(function () {
-                    that.setData({
-                        loadingHidden: true
-                    })
-                }, 1500)
             }
         })
 
